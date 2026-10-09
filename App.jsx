@@ -208,6 +208,7 @@ function AboutPage() {
       <div className="card">
         <p>{t('about_p')}</p>
         {['src', 'priv', 'mod', 'com'].map((k) => <div key={k}><h3>{t(`about_${k}_h`)}</h3><p>{t(`about_${k}`)}</p></div>)}
+        <p><a href="/privacy.html">{t('privacy_link')}</a></p>
       </div>
     </>
   )

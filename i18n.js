@@ -31,7 +31,7 @@ const hi = {
   about_priv_h: 'गोपनीयता', about_priv: 'यह प्रीव्यू कुछ भी इकट्ठा या सहेजता नहीं है। आगे भी सिर्फ़ ज़रूरी जानकारी ली जाएगी, और फ़ोन नंबर या पते कभी सार्वजनिक नहीं होंगे।',
   about_mod_h: 'मॉडरेशन', about_mod: 'उपयोगकर्ता रिपोर्ट छपने से पहले जाँची जाएँगी। धमकी, उत्पीड़न, निजी जानकारी उजागर करना और हिंसा भड़काना मना है।',
   about_com_h: 'समुदाय', about_com: 'टिप्पणियाँ और चर्चा भविष्य की सुविधा हैं। इसके लिए मॉडरेटर भूमिकाओं वाला सुरक्षित बैकएंड चाहिए।',
-  lang_btn: 'English', 'c_Farmers': 'किसान', 'c_Jobs': 'रोज़गार', 'c_Education': 'शिक्षा', 'c_Roads': 'सड़क', 'c_Water and public services': 'पानी और जन-सेवाएँ',
+  lang_btn: 'English', privacy_link: 'गोपनीयता नीति', 'c_Farmers': 'किसान', 'c_Jobs': 'रोज़गार', 'c_Education': 'शिक्षा', 'c_Roads': 'सड़क', 'c_Water and public services': 'पानी और जन-सेवाएँ',
 }
 const en = {
   home: 'Home', protests: 'Protests', news: 'News', issues: 'Issues', help: 'Help', about: 'About',
@@ -63,6 +63,6 @@ const en = {
   about_priv_h: 'Privacy', about_priv: 'This preview collects and stores nothing. In future we will collect only what is needed, and never publish phone numbers or addresses.',
   about_mod_h: 'Moderation', about_mod: 'User reports will be reviewed before publishing. Threats, harassment, doxxing and incitement to violence are not allowed.',
   about_com_h: 'Community', about_com: 'Comments and discussion are a future feature. They need a secure backend with moderator roles.',
-  lang_btn: 'हिंदी', 'c_Farmers': 'Farmers', 'c_Jobs': 'Jobs', 'c_Education': 'Education', 'c_Roads': 'Roads', 'c_Water and public services': 'Water and public services',
+  lang_btn: 'हिंदी', privacy_link: 'Privacy policy', 'c_Farmers': 'Farmers', 'c_Jobs': 'Jobs', 'c_Education': 'Education', 'c_Roads': 'Roads', 'c_Water and public services': 'Water and public services',
 }
 export const STRINGS = { hi, en }

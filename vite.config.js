@@ -17,7 +17,7 @@ const pwa = () => ({
     }
     this.emitFile({ type: 'asset', fileName: 'manifest.webmanifest', source: JSON.stringify(manifest) })
     this.emitFile({ type: 'asset', fileName: 'sw.js', source: "self.addEventListener('install',()=>self.skipWaiting());self.addEventListener('activate',e=>e.waitUntil(clients.claim()));self.addEventListener('fetch',e=>e.respondWith(fetch(e.request)))" })
-    for (const f of ['icon-192.png', 'icon-512.png']) this.emitFile({ type: 'asset', fileName: f, source: fs.readFileSync(f) })
+    for (const f of ['icon-192.png', 'icon-512.png', 'privacy.html']) this.emitFile({ type: 'asset', fileName: f, source: fs.readFileSync(f) })
   },
 })
 export default defineConfig({ plugins: [react(), pwa()] })
