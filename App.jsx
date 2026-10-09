@@ -1,7 +1,8 @@
 import { useState, useMemo, useEffect } from 'react'
 import { House, Megaphone, Newspaper, FileText, Landmark, Info, ExternalLink, Flag, Search, TriangleAlert } from 'lucide-react'
-import { PROTESTS, NEWS, ISSUES, HELP, CATEGORIES } from './demo'
+import { DATA, CATEGORIES } from './demo'
 import { L, useT, STRINGS } from './i18n'
+const useD = () => DATA[useT().lang]
 
 const PAGES = [['home', House], ['protests', Megaphone], ['news', Newspaper], ['issues', FileText], ['help', Landmark], ['about', Info]]
 
@@ -34,6 +35,7 @@ function Source({ s }) {
 
 function HomePage({ go, soon }) {
   const { t } = useT()
+  const { NEWS, PROTESTS } = useD()
   const [q, setQ] = useState('')
   return (
     <>
@@ -76,12 +78,13 @@ function ProtestCard({ p }) {
 
 function ProtestsPage({ initialQ }) {
   const { t } = useT()
+  const { PROTESTS } = useD()
   const loading = useLoad()
   const [q, setQ] = useState(initialQ || ''), [state, setState] = useState(''), [topic, setTopic] = useState(''), [from, setFrom] = useState('')
   const states = [...new Set(PROTESTS.map((p) => p.state))]
   const list = useMemo(() => PROTESTS.filter((p) =>
     (!state || p.state === state) && (!topic || p.topic === topic) && (!from || p.date >= from) &&
-    (`${p.issue} ${p.city} ${p.state}`.toLowerCase().includes(q.toLowerCase()))), [q, state, topic, from])
+    (`${p.issue} ${p.city} ${p.state}`.toLowerCase().includes(q.toLowerCase()))), [q, state, topic, from, PROTESTS])
   return (
     <>
       <h1>{t('live_title')} <Demo /></h1>
@@ -115,6 +118,7 @@ function NewsCard({ n, soon }) {
 
 function NewsPage({ soon }) {
   const { t } = useT()
+  const { NEWS } = useD()
   const loading = useLoad()
   return (
     <>
@@ -127,8 +131,10 @@ function NewsPage({ soon }) {
 
 function IssuesPage({ soon }) {
   const { t } = useT()
+  const { ISSUES } = useD()
   const empty = { title: '', category: '', state: '', district: '', description: '' }
-  const [items, setItems] = useState(ISSUES), [f, setF] = useState(empty), [err, setErr] = useState({})
+  const [added, setAdded] = useState([]), [f, setF] = useState(empty), [err, setErr] = useState({})
+  const items = [...added, ...ISSUES]
   const set = (k) => (e) => setF({ ...f, [k]: e.target.value })
   const submit = (e) => {
     e.preventDefault()
@@ -140,7 +146,7 @@ function IssuesPage({ soon }) {
     if (/\b\d{10}\b/.test(f.description)) er.description = 'err_phone'
     setErr(er)
     if (Object.keys(er).length) return
-    setItems([{ ...f, id: String(Date.now()), status: t('pending') }, ...items])
+    setAdded([{ ...f, id: String(Date.now()), status: t('pending') }, ...added])
     setF(empty)
   }
   const Err = ({ k }) => err[k] ? <span className="error" role="alert">{t(err[k])}</span> : null
@@ -176,6 +182,7 @@ function IssuesPage({ soon }) {
 
 function HelpPage() {
   const { t } = useT()
+  const { HELP } = useD()
   const [cat, setCat] = useState('')
   const list = HELP.filter((h) => !cat || h.cat === cat)
   return (
